@@ -8,8 +8,12 @@ let sections = [
     content: 'README.md',
   },
   {
-    name: 'Button Block',
-    components: ['src/components/Button/Button.js'],
+    name: 'useListWordsReference',
+    components: ['src/components/useListWordsReference/useListWordsReference.js'],
+  },
+  {
+    name: 'useSelectTypeUniqueWords',
+    components: ['src/components/useSelectTypeUniqueWords/useSelectTypeUniqueWords.js'],
   },
 ];
 
@@ -77,6 +81,12 @@ module.exports = {
           loader: 'babel-loader',
         },
       ],
+    },
+    resolve: {
+      fallback: {
+        path: require.resolve('path-browserify'),
+        buffer: require.resolve('buffer/'),
+      },
     },
     plugins: [
       new webpack.DefinePlugin({
