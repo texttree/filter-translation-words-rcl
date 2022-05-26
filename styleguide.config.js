@@ -76,16 +76,16 @@ module.exports = {
     module: {
       rules: [
         {
+          enforce: 'pre',
           test: /\.js$/,
-          exclude: /node_modules/,
-          loader: 'babel-loader',
+          loader: 'source-map-loader',
         },
       ],
     },
     resolve: {
       fallback: {
-        path: require.resolve('path-browserify'),
-        buffer: require.resolve('buffer/'),
+        path: false,
+        buffer: false,
       },
     },
     plugins: [

@@ -2,41 +2,58 @@ import { useState } from 'react';
 
 import useDeepCompareEffect from 'use-deep-compare-effect';
 
-const useSelectTypeUniqueWords = (tsvs, bookId) => {
-  const [listWordsReference, setListWordsReference] = useState({});
-  const [listWordsChapter, setListWordChapter] = useState({});
+const useSelectTypeUniqueWords = (
+  items,
+  switchTypeUniqueWords,
+  listWordsReference,
+  chapter,
+  verse,
+  listWordsChapter
+) => {
+  const [uniqueWordsItems, setUniqueWordsItems] = useState([]);
 
   useDeepCompareEffect(() => {
-    if (!tsvs) {
+    if (!items || items.length === 0) {
       return;
     }
-    const listBook = {};
 
-    const listChapter = {};
-    Object.entries(tsvs).forEach(([key, chapters]) => {
-      const chaptersWords = {};
-      Object.entries(chapters).forEach(([key, verses]) => {
-        verses.forEach((verse) => {
-          if (!Object.keys(listBook).includes(verse.TWLink)) {
-            listBook[verse.TWLink] = [verse.Reference];
-          }
+    if (switchTypeUniqueWords === 'disabled') {
+      setUniqueWordsItems(items);
+      return;
+    }
 
-          if (!listBook[verse.TWLink].includes(verse.Reference)) {
-            listBook[verse.TWLink].push(verse.Reference);
-          }
-
-          if (!Object.keys(chaptersWords).includes(verse.TWLink)) {
-            chaptersWords[verse.TWLink] = verse.Reference.split(':')[1];
-          }
-        });
-      });
-      listChapter[key] = chaptersWords;
+    const wordsItems = [];
+    const checkItemsVerse = [];
+    items.forEach((item) => {
+      if (!checkItemsVerse.includes(item.TWLink)) {
+        wordsItems.push(item);
+        checkItemsVerse.push(item.TWLink);
+      }
     });
+    if (switchTypeUniqueWords === 'verse') {
+      setUniqueWordsItems(wordsItems);
+      return;
+    }
+    const otherWordsItems = [];
+    wordsItems.forEach((item) => {
+      if (
+        (switchTypeUniqueWords === 'chapter' &&
+          listWordsChapter &&
+          item?.TWLink &&
+          listWordsChapter[chapter] &&
+          listWordsChapter[chapter][item?.TWLink] === verse) ||
+        (switchTypeUniqueWords === 'book' &&
+          listWordsReference &&
+          item?.TWLink &&
+          listWordsReference[item?.TWLink] &&
+          listWordsReference[item?.TWLink][0] === chapter + ':' + verse)
+      ) {
+        otherWordsItems.push(item);
+      }
+    });
+    setUniqueWordsItems(otherWordsItems);
+  }, [switchTypeUniqueWords, { items }, listWordsReference]);
 
-    setListWordChapter(listChapter);
-    setListWordsReference(listBook);
-  }, [bookId, { tsvs }]);
-
-  return { listWordsReference, listWordsChapter };
+  return { uniqueWordsItems };
 };
 export default useSelectTypeUniqueWords;
