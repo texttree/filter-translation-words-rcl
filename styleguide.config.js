@@ -8,12 +8,20 @@ let sections = [
     content: 'README.md',
   },
   {
-    name: 'useListWordsReference',
-    components: ['src/components/useListWordsReference/useListWordsReference.js'],
+    name: 'Hooks',
+    components: [
+      'src/components/useListWordsReference/useListWordsReference.js',
+      'src/components/useSelectTypeUniqueWords/useSelectTypeUniqueWords.js',
+      'src/components/useChangeColorTWL/useChangeColorTWL.js',
+    ],
   },
   {
-    name: 'useSelectTypeUniqueWords',
-    components: ['src/components/useSelectTypeUniqueWords/useSelectTypeUniqueWords.js'],
+    name: 'UI',
+    components: ['src/components/SwitchFilterTWL/SwitchFilterTWL.js'],
+  },
+  {
+    name: 'Demo',
+    content: 'src/components/Demo.md',
   },
 ];
 
@@ -76,9 +84,9 @@ module.exports = {
     module: {
       rules: [
         {
-          enforce: 'pre',
           test: /\.js$/,
-          loader: 'source-map-loader',
+          exclude: /node_modules/,
+          loader: 'babel-loader',
         },
       ],
     },

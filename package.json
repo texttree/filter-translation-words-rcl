@@ -55,6 +55,8 @@
     "@material-ui/icons": "^4.11.3",
     "@material-ui/lab": "^4.0.0-alpha.61",
     "babel-loader": "^8.2.4",
+    "bible-reference-rcl": "^1.1.0",
+    "core-js": "^3.22.7",
     "eslint": "^8.13.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-jsx-a11y": "^6.5.1",
@@ -71,13 +73,14 @@
     "react-dom": "^17.0.2",
     "react-json-view": "^1.21.3",
     "react-styleguidist": "^11.2.0",
-    "scripture-resources-rcl": "^4.1.9",
+    "scripture-resources-rcl": "^5.2.0",
     "source-map-loader": "^3.0.1",
+    "tc-ui-toolkit": "^6.0.6",
     "translation-helps-rcl": "^3.2.0",
-    "webpack": "^5.72.0"
+    "webpack": "^5.72.0",
+    "word-aligner": "^1.0.0"
   },
   "dependencies": {
-    "buffer": "^6.0.3",
     "use-deep-compare-effect": "^1.8.1"
   }
 }

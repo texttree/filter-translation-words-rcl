@@ -2,14 +2,14 @@ import { useState } from 'react';
 
 import useDeepCompareEffect from 'use-deep-compare-effect';
 
-const useSelectTypeUniqueWords = (
+const useSelectTypeUniqueWords = ({
   items,
-  switchTypeUniqueWords,
+  typeUniqueWords,
   listWordsReference,
   chapter,
   verse,
-  listWordsChapter
-) => {
+  listWordsChapter,
+}) => {
   const [uniqueWordsItems, setUniqueWordsItems] = useState([]);
 
   useDeepCompareEffect(() => {
@@ -17,7 +17,7 @@ const useSelectTypeUniqueWords = (
       return;
     }
 
-    if (switchTypeUniqueWords === 'disabled') {
+    if (typeUniqueWords === 'disabled') {
       setUniqueWordsItems(items);
       return;
     }
@@ -30,19 +30,19 @@ const useSelectTypeUniqueWords = (
         checkItemsVerse.push(item.TWLink);
       }
     });
-    if (switchTypeUniqueWords === 'verse') {
+    if (typeUniqueWords === 'verse') {
       setUniqueWordsItems(wordsItems);
       return;
     }
     const otherWordsItems = [];
     wordsItems.forEach((item) => {
       if (
-        (switchTypeUniqueWords === 'chapter' &&
+        (typeUniqueWords === 'chapter' &&
           listWordsChapter &&
           item?.TWLink &&
           listWordsChapter[chapter] &&
           listWordsChapter[chapter][item?.TWLink] === verse) ||
-        (switchTypeUniqueWords === 'book' &&
+        (typeUniqueWords === 'book' &&
           listWordsReference &&
           item?.TWLink &&
           listWordsReference[item?.TWLink] &&
@@ -52,7 +52,7 @@ const useSelectTypeUniqueWords = (
       }
     });
     setUniqueWordsItems(otherWordsItems);
-  }, [switchTypeUniqueWords, { items }, listWordsReference]);
+  }, [typeUniqueWords, { items }, listWordsReference]);
 
   return { uniqueWordsItems };
 };
