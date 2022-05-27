@@ -31,7 +31,7 @@ const options = [
   },
   {
     value: 'disabled',
-    label: 'By disabled',
+    label: 'Disabled',
   },
 ];
 
@@ -43,6 +43,7 @@ function Component() {
         actions={actions}
         options={options}
         classes={classes}
+        labelHideOptions={'Hide repeated words'}
       />
       <div> {switchTypeUniqueWords && switchTypeUniqueWords}</div>
     </>

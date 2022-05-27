@@ -8,7 +8,7 @@ import {
   RadioGroup,
 } from '@material-ui/core';
 
-function SwitchUniqueWords({
+function SwitchFilterTWL({
   state: { switchTypeUniqueWords, switchHideRepeatedWords },
   actions: { setSwitchTypeUniqueWords, setSwitchHideRepeatedWords },
   options,
@@ -41,10 +41,10 @@ function SwitchUniqueWords({
             disabled={switchTypeUniqueWords === 'disabled'}
           />
         }
-        label={'Hide_repeated_words'}
+        label={labelHideOptions}
       />
     </FormControl>
   );
 }
 
-export default SwitchUniqueWords;
+export default SwitchFilterTWL;
