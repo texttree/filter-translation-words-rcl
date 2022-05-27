@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 const useChangeColorTWL = ({ items, hideRepeatedWords, uniqueWordsItems, item }) => {
   const [changeColor, setChangeColor] = useState();
-
+  console.log({ items, hideRepeatedWords, uniqueWordsItems, item });
   useEffect(() => {
     const _changeColor =
       !hideRepeatedWords &&
