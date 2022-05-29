@@ -1,7 +1,7 @@
 ### Default example
 
 ```jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BibleReference, useBibleReference } from 'bible-reference-rcl';
 import Button from '@material-ui/core/Button';
 import {
@@ -21,15 +21,12 @@ function Component() {
       display: 'flex',
       flexDirection: 'row',
     },
-    twl: {
-      color: theme.palette.text.disabled,
-    },
   }));
   const classes = useStyles();
 
-  const initialBook = 'mal';
-  const initialChapter = '2';
-  const initialVerse = '3';
+  const initialBook = 'mat';
+  const initialChapter = '1';
+  const initialVerse = '2';
   const initial = {
     initialBook,
     initialChapter,
@@ -95,7 +92,7 @@ function Component() {
 
   const { uniqueWordsItems } = useSelectTypeUniqueWords({
     items,
-    typeUniqueWords: 'verse',
+    typeUniqueWords: switchTypeUniqueWords,
     listWordsReference,
     chapter,
     verse,
@@ -106,13 +103,18 @@ function Component() {
     items,
     hideRepeatedWords: switchHideRepeatedWords,
     uniqueWordsItems,
-    item,
+    itemIndex,
   });
+  console.log({ uniqueWordsItems, items });
   const showSaveChangesPrompt = () => {
     return new Promise((resolve, reject) => {
       resolve();
     });
   };
+  useEffect(() => {
+    setItemIndex(0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [bookId, chapter, verse, switchHideRepeatedWords, switchTypeUniqueWords]);
   console.log(changeColor);
   return (
     <>
@@ -148,19 +150,20 @@ function Component() {
         labelHideOptions={'Hide repeated words'}
       />
       <div>{bookId + chapter + ':' + verse}</div>
-      <div className={changeColor ? classes.twl : ''}>
-        <Card
-          headers={headers}
-          filters={filters}
-          setFilters={setFilters}
-          items={!switchHideRepeatedWords ? items : uniqueWordsItems}
-          itemIndex={itemIndex}
-          title={'Words'}
-          setItemIndex={setItemIndex}
-          showSaveChangesPrompt={showSaveChangesPrompt}
-          setMarkdownView={setMarkdownView}
-          markdownView={markdownView}
-        >
+      {changeColor !== false ? <div>grey</div> : ''}
+      <Card
+        headers={headers}
+        filters={filters}
+        setFilters={setFilters}
+        items={!switchHideRepeatedWords ? items : uniqueWordsItems}
+        itemIndex={itemIndex}
+        title={'Words'}
+        setItemIndex={setItemIndex}
+        showSaveChangesPrompt={showSaveChangesPrompt}
+        setMarkdownView={setMarkdownView}
+        markdownView={markdownView}
+      >
+        <div style={{ color: changeColor && 'grey' }}>
           <CardContent
             filters={filters}
             setFilters={setFilters}
@@ -171,8 +174,8 @@ function Component() {
             showSaveChangesPrompt={showSaveChangesPrompt}
             viewMode={'markdown'}
           ></CardContent>
-        </Card>
-      </div>
+        </div>
+      </Card>
     </>
   );
 }

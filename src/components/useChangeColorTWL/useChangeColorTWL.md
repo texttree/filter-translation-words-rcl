@@ -30,7 +30,7 @@ function Component() {
     ...config,
   });
   const {
-    state: { item },
+    state: { item, itemIndex },
     actions: { setItemIndex },
   } = useCardState({
     items: !hideRepeatedWords ? items : uniqueWordsItems,
@@ -53,7 +53,8 @@ function Component() {
     items,
     hideRepeatedWords,
     uniqueWordsItems,
-    item,
+    items,
+    itemIndex,
   });
   const json = { changeColor };
 
