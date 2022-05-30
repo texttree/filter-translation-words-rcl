@@ -149,8 +149,7 @@ function Component() {
         classes={classes}
         labelHideOptions={'Hide repeated words'}
       />
-      <div>{bookId + chapter + ':' + verse}</div>
-      {changeColor !== false ? <div>grey</div> : ''}
+
       <Card
         headers={headers}
         filters={filters}

@@ -1,54 +1,34 @@
 <div id="top"></div>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
 
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
-
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
+[![Contributors](https://img.shields.io/github/contributors/texttree/filter-translation-words-rcl.svg?style=for-the-badge)](https://github.com/texttree/filter-translation-words-rcl/graphs/contributors)
+[![Forks](https://img.shields.io/github/forks/texttree/filter-translation-words-rcl.svg?style=for-the-badge)](https://github.com/texttree/filter-translation-words-rcl/network/members)
+[![Stargazers](https://img.shields.io/github/stars/texttree/filter-translation-words-rcl.svg?style=for-the-badge)](https://github.com/texttree/filter-translation-words-rcl/stargazers)
+[![Issues](https://img.shields.io/github/issues/texttree/filter-translation-words-rcl.svg?style=for-the-badge)](https://github.com/texttree/filter-translation-words-rcl/issues)
+[![MIT License](https://img.shields.io/github/license/texttree/filter-translation-words-rcl.svg?style=for-the-badge)](https://github.com/texttree/filter-translation-words-rcl/blob/master/LICENSE)
 
 <!-- PROJECT LOGO -->
 <br />
-<div align="center">
-  <a href="https://github.com/texttree/template-rcl">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+<div >
+  <a href="https://github.com/texttree/filter-translation-words-rcl">
+    <img src="images/logo.png" alt="Logo" width="256" height="256">
   </a>
 
-<h3 align="center">project_title</h3>
+<h3 >filter-translation-words-rcl</h3>
 
   <p align="center">
-    project_description
-    <br />
-    <a href="https://github.com/texttree/template-rcl"><strong>Explore the docs »</strong></a>
+    <a href="https://filter-translations-words-rcl.netlify.app/"><strong>Explore the docs and code playground »</strong></a>
     <br />
     <br />
-    <a href="https://example.netlify.app">View Demo</a>
-    ·
-    <a href="https://github.com/texttree/template-rcl/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/texttree/template-rcl/issues">Request Feature</a>
+    <div> <a href="https://github.com/texttree/filter-translation-words-rcl/issues">Report Bug</a> <span> · </span> <a href="https://github.com/texttree/filter-translation-words-rcl/issues">Request Feature</a></div>
   </p>
 </div>
 
 <!-- TABLE OF CONTENTS -->
+
 <details>
-  <summary>Table of Contents</summary>
-  <ol>
+
+  <summary>Table of Contents ↧</summary>
+  <ul>
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
@@ -58,7 +38,6 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
@@ -67,45 +46,38 @@
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
+  </ul>
 </details>
 
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<img src="/images/screenshot.png" alt="Filter translation words shot" width="100%">
 
 **Purpose**
 
-- The purpose of this project
+- Filter repeated words in TWL card
 
 **Problem**
 
-- The problem statement
+- Chapters and verses often contain words that have already been encountered before. And it's not really convenient when they are repeated in [translation-helps-rcl's](https://github.com/unfoldingWord/translation-helps-rcl) [TWL card](https://translation-helps-rcl.netlify.app).
 
 **Scope**
 
-- What's in scope and out of scope for this project?
+- The library allows you to filter words that have already appeared in a verse, chapter or book
+- Words can either be removed from the list or left, but marked with a different color.
 
 **Background**
 
-- What led us to this point? How did we get here?
-
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `texttree`, `template-rcl`, `telegram`, `linkedin_username`, `email`, `email_client`, `project_title`, `project_description`
+- Translators who check the correctness of the translation really wanted to have this feature
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Built With
 
 - [React.js](https://reactjs.org/)
-- [Vue.js](https://vuejs.org/)
-- [Angular](https://angular.io/)
-- [Svelte](https://svelte.dev/)
-- [Laravel](https://laravel.com)
-- [Bootstrap](https://getbootstrap.com)
-- [JQuery](https://jquery.com)
+- [React Styleguidist](https://react-styleguidist.js.org/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -113,36 +85,21 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+### Installation
 
-### Prerequisites
+Add the library to your React app
 
-**Data**
-what is the source of the data and data formats are covered by this project?
+- yarn
 
-This is an example of how to list things you need to use the software and how to install them.
+```bash
+yarn add @texttree/filter-translation-words-rcl
+```
 
 - npm
-  ```bash
-  npm install npm@latest -g
-  ```
 
-### Installation/First Steps
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```bash
-   git clone https://github.com/texttree/template-rcl.git
-   ```
-3. Install NPM packages
-   ```bash
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
+```bash
+npm install @texttree/filter-translation-words-rcl
+```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -150,11 +107,59 @@ This is an example of how to list things you need to use the software and how to
 
 ## Usage/Integration
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+This library works in conjunction with the useСontent and useCardState hooks from the library [translation-helps-rcl](https://github.com/unfoldingWord/translation-helps-rcl).
 
-_For more examples, please refer to the [Documentation](https://example.com)_ Possibly JS Docs.
+**[Full demo](https://filter-translations-words-rcl.netlify.app/#/Demo)**
 
-[Styleguidist link](https://example.netlify.app)
+To begin with, you need to get 2 arrays using a **_useContent_** - **_tsvs_** (a list of all encountered word references for this book) and **_items_** (a list of references for this verse).Then pass **_tsvs_** to **_useListWordsReference_**. At the output we get 2 objects( **_listWordsReference_** -needed for comparison by book , **_listWordsChapter_** - needed for comparison by chapter), the keys of which are references to words.
+
+```js static
+ const config = {
+    verse: '1',
+    chapter: '1',
+    projectId: 'tit,
+    ref: 'master',
+    languageId: 'en',
+    resourceId: 'twl',
+    owner: 'unfoldingWord',
+    server: 'https://git.door43.org',
+  };
+   const { tsvs, items, markdown } = useContent({
+    ...config,
+  });
+
+  const { listWordsReference, listWordsChapter } = useListWordsReference(tsvs);
+
+```
+
+The next step is to get a filtered array - **_uniqueWordsItems_**. Using a **_useSelectTypeUniqueWords_**. **_UniqueWordsItems_** can already be used in the UI.
+Mandatory parameters:
+**_items_**, **_typeUniqueWords_**, **_listWordsReference_**, **_chapter_**, **_verse_** and **_listWordsChapter_**.
+The filtering method (book, chapter, verse) is passed in the **_typeUniqueWords_** parameter. The 'disabled' option will return the original array of items.
+
+```js static
+const { uniqueWordsItems } = useSelectTypeUniqueWords({
+  items,
+  typeUniqueWords: switchTypeUniqueWords,
+  listWordsReference,
+  chapter,
+  verse,
+  listWordsChapter,
+});
+```
+
+An additional hook - **_useChangeColorTWL_** makes it possible to compare **_items_** and **_uniqueWordsItems_** - and returns a Boolean value. Can be used in highlighting the contents of the TWL card with color.
+
+```js static
+const changeColor = useChangeColorTWL({
+  items,
+  hideRepeatedWords: switchHideRepeatedWords,
+  uniqueWordsItems,
+  itemIndex,
+});
+```
+
+_For more examples, please refer to the [Styleguidist link](https://filter-translations-words-rcl.netlify.app)_
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -162,12 +167,9 @@ _For more examples, please refer to the [Documentation](https://example.com)_ Po
 
 ## Roadmap
 
-- [] Feature 1
-- [] Feature 2
-- [] Feature 3
-  - [] Nested Feature
+**IN PROGRESS**
 
-See the [open issues](https://github.com/texttree/template-rcl/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/texttree/filter-translations-words-rcl/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -202,33 +204,6 @@ Distributed under the MIT License. See [LICENSE](license-url) for more informati
 
 ## Contact
 
-Your Name - [@telegram](https://t.me/telegram) - email@email_client.com
-
-Project Link: [https://github.com/texttree/template-rcl](https://github.com/texttree/template-rcl)
+Project Link: [https://github.com/texttree/filter-translation-words-rcl](https://github.com/texttree/filter-translation-words-rcl)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- ACKNOWLEDGMENTS -->
-
-## Acknowledgments
-
-- []()
-- []()
-- []()
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-
-[contributors-shield]: https://img.shields.io/github/contributors/texttree/template-rcl.svg?style=for-the-badge
-[contributors-url]: https://github.com/texttree/template-rcl/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/texttree/template-rcl.svg?style=for-the-badge
-[forks-url]: https://github.com/texttree/template-rcl/network/members
-[stars-shield]: https://img.shields.io/github/stars/texttree/template-rcl.svg?style=for-the-badge
-[stars-url]: https://github.com/texttree/template-rcl/stargazers
-[issues-shield]: https://img.shields.io/github/issues/texttree/template-rcl.svg?style=for-the-badge
-[issues-url]: https://github.com/texttree/template-rcl/issues
-[license-shield]: https://img.shields.io/github/license/texttree/template-rcl.svg?style=for-the-badge
-[license-url]: https://github.com/texttree/template-rcl/blob/master/LICENSE
-[product-screenshot]: images/screenshot.png
