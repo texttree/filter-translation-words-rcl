@@ -78,15 +78,6 @@ function Component() {
   const { tsvs, items, markdown } = useContent({
     ...config,
   });
-  const {
-    state: { item, itemIndex, filters, markdownView, headers },
-    actions: { setItemIndex, setFilters, setMarkdownView },
-  } = useCardState({
-    items: !switchHideRepeatedWords ? items : uniqueWordsItems,
-    verse: verse,
-    chapter: chapter,
-    projectId: bookId,
-  });
 
   const { listWordsReference, listWordsChapter } = useListWordsReference(tsvs);
 
@@ -98,6 +89,15 @@ function Component() {
     verse,
     listWordsChapter,
   });
+  const {
+    state: { item, itemIndex, filters, markdownView, headers },
+    actions: { setItemIndex, setFilters, setMarkdownView },
+  } = useCardState({
+    items: !switchHideRepeatedWords ? items : uniqueWordsItems,
+    verse: verse,
+    chapter: chapter,
+    projectId: bookId,
+  });
 
   const changeColor = useChangeColorTWL({
     items,
@@ -105,7 +105,7 @@ function Component() {
     uniqueWordsItems,
     itemIndex,
   });
-  console.log({ uniqueWordsItems, items });
+
   const showSaveChangesPrompt = () => {
     return new Promise((resolve, reject) => {
       resolve();
@@ -115,7 +115,7 @@ function Component() {
     setItemIndex(0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bookId, chapter, verse, switchHideRepeatedWords, switchTypeUniqueWords]);
-  console.log(changeColor);
+
   return (
     <>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -149,7 +149,10 @@ function Component() {
         classes={classes}
         labelHideOptions={'Hide repeated words'}
       />
-
+      <div>
+        {bookId}
+        {chapter}:{verse}
+      </div>
       <Card
         headers={headers}
         filters={filters}
@@ -162,11 +165,12 @@ function Component() {
         setMarkdownView={setMarkdownView}
         markdownView={markdownView}
       >
-        <div style={{ color: changeColor && 'grey' }}>
+        <div style={{ color: `${changeColor ? 'grey' : 'black'}` }}>
           <CardContent
             filters={filters}
             setFilters={setFilters}
             item={item}
+            items={!switchHideRepeatedWords ? items : uniqueWordsItems}
             languageId={'en'}
             markdown={markdown}
             markdownView={markdownView}
