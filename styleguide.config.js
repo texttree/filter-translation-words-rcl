@@ -17,7 +17,7 @@ let sections = [
   },
   {
     name: 'UI',
-    components: ['src/components/SwitchFilterTWL/SwitchFilterTWL.js'],
+    components: ['src/components/SwitchFilter/SwitchFilter.js'],
   },
   {
     name: 'Demo',
