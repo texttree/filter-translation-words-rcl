@@ -3,7 +3,7 @@
 ```jsx
 import React, { useState } from 'react';
 import ReactJson from 'react-json-view';
-import { SwitchFilterTWL } from '@texttree/filter-translation-words-rcl';
+import { SwitchFilter } from '@texttree/filter-translation-words-rcl';
 import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,7 +38,7 @@ const options = [
 function Component() {
   return (
     <>
-      <SwitchFilterTWL
+      <SwitchFilter
         state={state}
         actions={actions}
         options={options}

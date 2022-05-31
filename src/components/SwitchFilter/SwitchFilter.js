@@ -8,7 +8,7 @@ import {
   RadioGroup,
 } from '@material-ui/core';
 
-function SwitchFilterTWL({
+function SwitchFilter({
   state: { switchTypeUniqueWords, switchHideRepeatedWords },
   actions: { setSwitchTypeUniqueWords, setSwitchHideRepeatedWords },
   options,
@@ -47,4 +47,4 @@ function SwitchFilterTWL({
   );
 }
 
-export default SwitchFilterTWL;
+export default SwitchFilter;

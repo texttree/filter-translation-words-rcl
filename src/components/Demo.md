@@ -7,8 +7,8 @@ import Button from '@material-ui/core/Button';
 import {
   useSelectTypeUniqueWords,
   useListWordsReference,
-  SwitchFilterTWL,
-  useChangeColorTWL,
+  SwitchFilter,
+  useIsRepeated,
 } from '@texttree/filter-translation-words-rcl';
 import { useContent, useCardState, Card, CardContent } from 'translation-helps-rcl';
 import { makeStyles } from '@material-ui/core/styles';
@@ -99,7 +99,7 @@ function Component() {
     projectId: bookId,
   });
 
-  const changeColor = useChangeColorTWL({
+  const isRepeated = useIsRepeated({
     items,
     hideRepeatedWords: switchHideRepeatedWords,
     uniqueWordsItems,
@@ -142,7 +142,7 @@ function Component() {
           {'Next Book'}
         </Button>
       </div>
-      <SwitchFilterTWL
+      <SwitchFilter
         state={state}
         actions={actions}
         options={options}
@@ -165,7 +165,7 @@ function Component() {
         setMarkdownView={setMarkdownView}
         markdownView={markdownView}
       >
-        <div style={{ color: `${changeColor ? 'grey' : 'black'}` }}>
+        <div style={{ color: `${isRepeated ? 'grey' : 'black'}` }}>
           <CardContent
             filters={filters}
             setFilters={setFilters}

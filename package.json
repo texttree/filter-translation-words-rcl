@@ -10,14 +10,14 @@
   "license": "MIT",
   "private": false,
   "main": "dist/index.js",
-  "url": "https://github.com/texttree/template-rcl",
-  "homepage": "https://github.com/texttree/template-rcl#readme",
+  "url": "https://filter-translation-words-rcl.netlify.app",
+  "homepage": "https://filter-translation-words-rcl.netlify.app#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/texttree/template-rcl.git"
+    "url": "git+https://github.com/texttree/filter-translation-words-rcl.git"
   },
   "bugs": {
-    "url": "https://github.com/texttree/template-rcl/issues"
+    "url": "https://github.com/texttree/filter-translation-words-rcl/issues"
   },
   "publishConfig": {
     "access": "public"
