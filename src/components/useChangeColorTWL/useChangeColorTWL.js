@@ -14,6 +14,6 @@ const useChangeColorTWL = ({ items, hideRepeatedWords, uniqueWordsItems, itemInd
     setChangeColor(_changeColor);
   }, [itemIndex, items, uniqueWordsItems, hideRepeatedWords]);
 
-  return { changeColor };
+  return changeColor;
 };
 export default useChangeColorTWL;
