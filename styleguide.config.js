@@ -12,7 +12,7 @@ let sections = [
     components: [
       'src/components/useListWordsReference/useListWordsReference.js',
       'src/components/useSelectTypeUniqueWords/useSelectTypeUniqueWords.js',
-      'src/components/useChangeColorTWL/useChangeColorTWL.js',
+      'src/components/useIsRepeated/useIsRepeated.js',
     ],
   },
   {

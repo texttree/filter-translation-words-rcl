@@ -16,7 +16,7 @@
 <h3 >filter-translation-words-rcl</h3>
 
   <p align="center">
-    <a href="https://filter-translations-words-rcl.netlify.app/"><strong>Explore the docs and code playground »</strong></a>
+    <a href="https://filter-translation-words-rcl.netlify.app/"><strong>Explore the docs and code playground »</strong></a>
     <br />
     <br />
     <div> <a href="https://github.com/texttree/filter-translation-words-rcl/issues">Report Bug</a> <span> · </span> <a href="https://github.com/texttree/filter-translation-words-rcl/issues">Request Feature</a></div>
@@ -109,7 +109,7 @@ npm install @texttree/filter-translation-words-rcl
 
 This library works in conjunction with the useСontent and useCardState hooks from the library [translation-helps-rcl](https://github.com/unfoldingWord/translation-helps-rcl).
 
-**[Full demo](https://filter-translations-words-rcl.netlify.app/#/Demo)**
+**[Full demo](https://filter-translation-words-rcl.netlify.app/#/Demo)**
 
 To begin with, you need to get 2 arrays using a **_useContent_** - **_tsvs_** (a list of all encountered word references for this book) and **_items_** (a list of references for this verse).Then pass **_tsvs_** to **_useListWordsReference_**. At the output we get 2 objects( **_listWordsReference_** -needed for comparison by book , **_listWordsChapter_** - needed for comparison by chapter), the keys of which are references to words.
 
@@ -132,7 +132,7 @@ To begin with, you need to get 2 arrays using a **_useContent_** - **_tsvs_** (a
 
 ```
 
-The next step is to get a filtered array - **_uniqueWordsItems_**. Using a **_useSelectTypeUniqueWords_**. **_UniqueWordsItems_** can already be used in the UI.
+The next step is to get a filtered array - **_uniqueWordsItems_**. Using a **_useSelectTypeUniqueWords_**. **_uniqueWordsItems_** can already be used in the UI.
 Mandatory parameters:
 **_items_**, **_typeUniqueWords_**, **_listWordsReference_**, **_chapter_**, **_verse_** and **_listWordsChapter_**.
 The filtering method (book, chapter, verse) is passed in the **_typeUniqueWords_** parameter. The 'disabled' option will return the original array of items.
@@ -148,10 +148,10 @@ const { uniqueWordsItems } = useSelectTypeUniqueWords({
 });
 ```
 
-An additional hook - **_useChangeColorTWL_** makes it possible to compare **_items_** and **_uniqueWordsItems_** - and returns a Boolean value. Can be used in highlighting the contents of the TWL card with color.
+An additional hook - **_useIsRepeated_** makes it possible to compare **_items_** and **_uniqueWordsItems_** - and returns a Boolean value. Can be used in highlighting the contents of the TWL card with color.
 
 ```js static
-const changeColor = useChangeColorTWL({
+const isRepeated = useIsRepeated({
   items,
   hideRepeatedWords: switchHideRepeatedWords,
   uniqueWordsItems,
@@ -159,7 +159,7 @@ const changeColor = useChangeColorTWL({
 });
 ```
 
-_For more examples, please refer to the [Styleguidist link](https://filter-translations-words-rcl.netlify.app)_
+_For more examples, please refer to the [Styleguidist link](https://filter-translation-words-rcl.netlify.app)_
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -169,7 +169,7 @@ _For more examples, please refer to the [Styleguidist link](https://filter-trans
 
 **IN PROGRESS**
 
-See the [open issues](https://github.com/texttree/filter-translations-words-rcl/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/texttree/filter-translation-words-rcl/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

@@ -1,19 +1,19 @@
 import { useEffect, useState } from 'react';
 
-const useChangeColorTWL = ({ items, hideRepeatedWords, uniqueWordsItems, itemIndex }) => {
-  const [changeColor, setChangeColor] = useState();
+const useIsRepeated = ({ items, hideRepeatedWords, uniqueWordsItems, itemIndex }) => {
+  const [isRepeated, setIsRepeated] = useState();
 
   useEffect(() => {
-    const _changeColor =
+    const _isRepeated =
       !hideRepeatedWords &&
       uniqueWordsItems &&
       items &&
       items.length > 0 &&
       (itemIndex !== undefined || null) &&
       !uniqueWordsItems.includes(items[itemIndex]);
-    setChangeColor(_changeColor);
+    setIsRepeated(_isRepeated);
   }, [itemIndex, items, uniqueWordsItems, hideRepeatedWords]);
 
-  return changeColor;
+  return isRepeated;
 };
-export default useChangeColorTWL;
+export default useIsRepeated;

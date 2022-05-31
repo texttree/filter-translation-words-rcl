@@ -6,7 +6,7 @@ import ReactJson from 'react-json-view';
 import {
   useSelectTypeUniqueWords,
   useListWordsReference,
-  useChangeColorTWL,
+  useIsRepeated,
 } from '@texttree/filter-translation-words-rcl';
 import { useContent, useCardState } from 'translation-helps-rcl';
 const bookId = 'tit';
@@ -49,14 +49,14 @@ function Component() {
     verse: verse,
     listWordsChapter,
   });
-  const changeColor = useChangeColorTWL({
+  const isRepeated = useIsRepeated({
     items,
     hideRepeatedWords,
     uniqueWordsItems,
     items,
     itemIndex,
   });
-  const json = { changeColor };
+  const json = { isRepeated };
 
   return (
     <ReactJson
