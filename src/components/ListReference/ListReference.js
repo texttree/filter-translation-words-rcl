@@ -49,10 +49,7 @@ function ListLinks({ links, onClose, onClickLink, currentVerse, currentChapter }
   const currentReference = (reference) => {
     return reference[0] + ':' + reference[1] === currentChapter + ':' + currentVerse;
   };
-  const handleClick = (reference) => {
-    goToBookChapterVerse(referenceSelected.bookId, reference[0], reference[1]);
-    onClose();
-  };
+
   const listReference = useMemo(
     () =>
       links &&
@@ -71,8 +68,7 @@ function ListLinks({ links, onClose, onClickLink, currentVerse, currentChapter }
           </Link>
         );
       }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [links]
+    [links, currentReference]
   );
   return <>{listReference}</>;
 }

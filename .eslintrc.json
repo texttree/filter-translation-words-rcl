@@ -27,7 +27,7 @@
     "ecmaVersion": 11,
     "sourceType": "module"
   },
-  "plugins": [],
+  "plugins": ["react", "react-hooks"],
   "rules": {
     "prettier/prettier": [
       "error",
