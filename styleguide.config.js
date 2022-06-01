@@ -17,7 +17,10 @@ let sections = [
   },
   {
     name: 'UI',
-    components: ['src/components/SwitchFilter/SwitchFilter.js'],
+    components: [
+      'src/components/SwitchFilter/SwitchFilter.js',
+      'src/components/ListReference/ListReference.js',
+    ],
   },
   {
     name: 'Demo',
