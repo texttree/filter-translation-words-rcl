@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
 import { Box, Popover, Link } from '@material-ui/core';
 import ListAltRoundedIcon from '@material-ui/icons/ListAltRounded';
@@ -9,24 +9,33 @@ export default function ListReference({
   onClickLink,
   currentChapter,
   currentVerse,
+  closed,
+  setClosed,
 }) {
   const [anchorEl, setAnchorEl] = useState(null);
-  const handleClose = () => {
+  const onClose = () => {
     setAnchorEl(null);
   };
+  useEffect(() => {
+    if (closed) {
+      onClose();
+    }
+  }, [closed]);
 
   return (
     <>
       <Box textAlign={'center'}>
         <ListAltRoundedIcon
-          onClick={(event) => setAnchorEl(event.currentTarget)}
+          onClick={(event) => {
+            setAnchorEl(event.currentTarget);
+            setClosed(false);
+          }}
           color="inherit"
         />
       </Box>
-      <Popover anchorEl={anchorEl} onClose={handleClose} open={Boolean(anchorEl)}>
+      <Popover anchorEl={anchorEl} onClose={onClose} open={Boolean(anchorEl)}>
         <ListLinks
           links={links}
-          onClose={handleClose}
           onClickLink={onClickLink}
           currentChapter={currentChapter}
           currentVerse={currentVerse}
@@ -36,7 +45,7 @@ export default function ListReference({
   );
 }
 
-function ListLinks({ links, onClose, onClickLink, currentVerse, currentChapter }) {
+function ListLinks({ links, onClickLink, currentVerse, currentChapter }) {
   const useStyles = makeStyles((theme) => ({
     linkContainer: {
       cursor: 'pointer',
