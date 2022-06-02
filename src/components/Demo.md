@@ -9,11 +9,13 @@ import {
   useListWordsReference,
   SwitchFilter,
   useIsRepeated,
+  ListReference,
 } from '@texttree/filter-translation-words-rcl';
 import { useContent, useCardState, Card, CardContent } from 'translation-helps-rcl';
 import { makeStyles } from '@material-ui/core/styles';
 
 function Component() {
+  const [closed, setClosed] = useState(false);
   const [switchTypeUniqueWords, setSwitchTypeUniqueWords] = useState('disabled');
   const [switchHideRepeatedWords, setSwitchHideRepeatedWords] = useState(false);
   const useStyles = makeStyles((theme) => ({
@@ -42,8 +44,13 @@ function Component() {
       goToNextChapter,
       goToPrevBook,
       goToNextBook,
+      goToBookChapterVerse,
     },
   } = useBibleReference(initial);
+  const onClickLink = (ref) => {
+    goToBookChapterVerse(bookId, ref[0], ref[1]);
+    setClosed(true);
+  };
   const config = {
     verse: verse,
     chapter: chapter,
@@ -150,6 +157,7 @@ function Component() {
         labelHideOptions={'Hide repeated words'}
       />
       <div>
+        reference:
         {bookId}
         {chapter}:{verse}
       </div>
@@ -165,6 +173,16 @@ function Component() {
         setMarkdownView={setMarkdownView}
         markdownView={markdownView}
       >
+        {item && (
+          <ListReference
+            links={item && listWordsReference && listWordsReference[item.TWLink]}
+            onClickLink={onClickLink}
+            currentChapter={chapter}
+            currentVerse={verse}
+            closed={closed}
+            setClosed={setClosed}
+          />
+        )}
         <div style={{ color: `${isRepeated ? 'grey' : 'black'}` }}>
           <CardContent
             filters={filters}

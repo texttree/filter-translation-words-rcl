@@ -27,7 +27,7 @@ function Component() {
   const { tsvs, items, markdown } = useContent({
     ...config,
   });
-
+  const [closed, setClosed] = useState(false);
   const { listWordsReference, listWordsChapter } = useListWordsReference(tsvs);
 
   const {
@@ -43,6 +43,7 @@ function Component() {
   const currentVerse = verse;
   const onClickLink = (ref) => {
     console.log(ref);
+    setClosed(true);
   };
   return (
     <>
@@ -51,6 +52,8 @@ function Component() {
         onClickLink={onClickLink}
         currentChapter={currentChapter}
         currentVerse={currentVerse}
+        closed={closed}
+        setClosed={setClosed}
       />
       <div>TWLink:{item && item.TWLink}</div>
       <div>bookId:{bookId}</div>
