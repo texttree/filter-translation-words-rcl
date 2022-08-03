@@ -1,0 +1,7 @@
+{
+"name":"@texttree/filter-translation-words-rcl",
+"version": "0.2.1",
+"date":"2022-06-02",
+"logo":"url of image",
+"dependencies":["use-deep-compare-effect"]
+}
