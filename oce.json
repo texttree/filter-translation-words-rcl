@@ -1,7 +1,7 @@
 {
-  "name": "@texttree/filter-translation-words-rcl",
+  "name": "npm/@texttree/filter-translation-words-rcl",
   "version": "0.2.1",
   "date": "2022-06-02",
   "logo": "https://raw.githubusercontent.com/texttree/filter-translation-words-rcl/master/images/logo.png",
-  "dependencies": ["use-deep-compare-effect"]
+  "dependencies": ["npm/use-deep-compare-effect"]
 }
