@@ -85,7 +85,6 @@ function Component() {
   const { listWordsReference, listWordsChapter } = useListWordsReference(tsvs);
 
   const { markedWords } = useMarkRepeatedWords({ tsvs, items });
-  console.log(markedWords);
 
   const {
     state: { item, itemIndex, filters, markdownView, headers },

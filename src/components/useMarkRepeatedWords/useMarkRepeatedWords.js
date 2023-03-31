@@ -6,7 +6,6 @@ const useMarkRepeatedWords = ({ items, tsvs, type = 'all' }) => {
     () => markRepeatedWordsFromTsvs(items, tsvs, type),
     [items, tsvs]
   );
-
   return { markedWords };
 };
 export default useMarkRepeatedWords;
