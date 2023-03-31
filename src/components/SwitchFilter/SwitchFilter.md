@@ -11,22 +11,19 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
   },
 }));
-const [switchTypeUniqueWords, setSwitchTypeUniqueWords] = useState('disabled');
-const [switchHideRepeatedWords, setSwitchHideRepeatedWords] = useState(true);
+const [typeFilter, setTypeFilter] = useState('disabled');
 const classes = useStyles();
-const actions = { setSwitchTypeUniqueWords, setSwitchHideRepeatedWords };
-const state = { switchTypeUniqueWords, switchHideRepeatedWords };
 const options = [
   {
-    value: 'verse',
+    value: 'isRepeatedInVerse',
     label: 'By verse',
   },
   {
-    value: 'chapter',
+    value: 'isRepeatedInChapter',
     label: 'By chapter',
   },
   {
-    value: 'book',
+    value: 'isRepeatedInBook',
     label: 'By book',
   },
   {
@@ -39,13 +36,12 @@ function Component() {
   return (
     <>
       <SwitchFilter
-        state={state}
-        actions={actions}
+        setTypeFilter={setTypeFilter}
+        typeFilter={typeFilter}
         options={options}
         classes={classes}
-        labelHideOptions={'Hide repeated words'}
       />
-      <div> {switchTypeUniqueWords && switchTypeUniqueWords}</div>
+      <div> {typeFilter && typeFilter}</div>
     </>
   );
 }

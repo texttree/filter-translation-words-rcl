@@ -5,10 +5,9 @@ import React, { useState, useEffect } from 'react';
 import { BibleReference, useBibleReference } from 'bible-reference-rcl';
 import Button from '@material-ui/core/Button';
 import {
-  useSelectTypeUniqueWords,
   useListWordsReference,
+  useMarkRepeatedWords,
   SwitchFilter,
-  useIsRepeated,
   ListReference,
 } from '@texttree/filter-translation-words-rcl';
 import { useContent, useCardState, Card, CardContent } from 'translation-helps-rcl';
@@ -16,8 +15,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 function Component() {
   const [closed, setClosed] = useState(false);
-  const [switchTypeUniqueWords, setSwitchTypeUniqueWords] = useState('disabled');
-  const [switchHideRepeatedWords, setSwitchHideRepeatedWords] = useState(false);
+  const [typeFilter, setTypeFilter] = useState('disabled');
+
   const useStyles = makeStyles((theme) => ({
     root: {
       display: 'flex',
@@ -61,20 +60,17 @@ function Component() {
     owner: 'unfoldingWord',
     server: 'https://git.door43.org',
   };
-
-  const actions = { setSwitchTypeUniqueWords, setSwitchHideRepeatedWords };
-  const state = { switchTypeUniqueWords, switchHideRepeatedWords };
   const options = [
     {
-      value: 'verse',
+      value: 'isRepeatedInVerse',
       label: 'By verse',
     },
     {
-      value: 'chapter',
+      value: 'isRepeatedInChapter',
       label: 'By chapter',
     },
     {
-      value: 'book',
+      value: 'isRepeatedInBook',
       label: 'By book',
     },
     {
@@ -88,29 +84,16 @@ function Component() {
 
   const { listWordsReference, listWordsChapter } = useListWordsReference(tsvs);
 
-  const { uniqueWordsItems } = useSelectTypeUniqueWords({
-    items,
-    typeUniqueWords: switchTypeUniqueWords,
-    listWordsReference,
-    chapter,
-    verse,
-    listWordsChapter,
-  });
+  const { markedWords } = useMarkRepeatedWords({ tsvs, items });
+
   const {
     state: { item, itemIndex, filters, markdownView, headers },
     actions: { setItemIndex, setFilters, setMarkdownView },
   } = useCardState({
-    items: !switchHideRepeatedWords ? items : uniqueWordsItems,
+    items: markedWords,
     verse: verse,
     chapter: chapter,
     projectId: bookId,
-  });
-
-  const isRepeated = useIsRepeated({
-    items,
-    hideRepeatedWords: switchHideRepeatedWords,
-    uniqueWordsItems,
-    itemIndex,
   });
 
   const showSaveChangesPrompt = () => {
@@ -121,8 +104,7 @@ function Component() {
   useEffect(() => {
     setItemIndex(0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [bookId, chapter, verse, switchHideRepeatedWords, switchTypeUniqueWords]);
-
+  }, [bookId, chapter, verse, typeFilter]);
   return (
     <>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -150,11 +132,10 @@ function Component() {
         </Button>
       </div>
       <SwitchFilter
-        state={state}
-        actions={actions}
+        setTypeFilter={setTypeFilter}
+        typeFilter={typeFilter}
         options={options}
         classes={classes}
-        labelHideOptions={'Hide repeated words'}
       />
       <div>
         reference:
@@ -165,7 +146,7 @@ function Component() {
         headers={headers}
         filters={filters}
         setFilters={setFilters}
-        items={!switchHideRepeatedWords ? items : uniqueWordsItems}
+        items={markedWords}
         itemIndex={itemIndex}
         title={'Words'}
         setItemIndex={setItemIndex}
@@ -183,12 +164,12 @@ function Component() {
             setClosed={setClosed}
           />
         )}
-        <div style={{ color: `${isRepeated ? 'grey' : 'black'}` }}>
+        <div style={{ color: `${item && item[typeFilter] ? 'grey' : 'black'}` }}>
           <CardContent
             filters={filters}
             setFilters={setFilters}
             item={item}
-            items={!switchHideRepeatedWords ? items : uniqueWordsItems}
+            items={markedWords}
             languageId={'en'}
             markdown={markdown}
             markdownView={markdownView}

@@ -3,10 +3,7 @@
 ```jsx
 import React from 'react';
 import ReactJson from 'react-json-view';
-import {
-  useSelectTypeUniqueWords,
-  useListWordsReference,
-} from '@texttree/filter-translation-words-rcl';
+import { useMarkRepeatedWords } from '@texttree/filter-translation-words-rcl';
 import { useContent } from 'translation-helps-rcl';
 
 const config = {
@@ -22,18 +19,9 @@ const config = {
 const { tsvs, items } = useContent({
   ...config,
 });
+const { markedWords } = useMarkRepeatedWords({ items, tsvs });
+const json = { markedWords };
 
-const { listWordsReference, listWordsChapter } = useListWordsReference(tsvs);
-
-const { uniqueWordsItems } = useSelectTypeUniqueWords({
-  items,
-  typeUniqueWords: 'verse',
-  listWordsReference,
-  chapter: '2',
-  verse: '1',
-  listWordsChapter,
-});
-const json = { uniqueWordsItems };
 function Component() {
   return (
     <ReactJson

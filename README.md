@@ -111,7 +111,7 @@ This library works in conjunction with the useСontent and useCardState hooks fr
 
 **[Full demo](https://filter-translation-words-rcl.netlify.app/#/Demo)**
 
-To begin with, you need to get 2 arrays using a **_useContent_** - **_tsvs_** (a list of all encountered word references for this book) and **_items_** (a list of references for this verse).Then pass **_tsvs_** to **_useListWordsReference_**. At the output we get 2 objects( **_listWordsReference_** -needed for comparison by book , **_listWordsChapter_** - needed for comparison by chapter), the keys of which are references to words.
+To begin with, you need to get 2 arrays using a **_useContent_** - **_tsvs_** (a list of all encountered word references for this book) and **_items_** (a list of references for this verse).
 
 ```js static
  const config = {
@@ -128,35 +128,12 @@ To begin with, you need to get 2 arrays using a **_useContent_** - **_tsvs_** (a
     ...config,
   });
 
-  const { listWordsReference, listWordsChapter } = useListWordsReference(tsvs);
-
 ```
 
-The next step is to get a filtered array - **_uniqueWordsItems_**. Using a **_useSelectTypeUniqueWords_**. **_uniqueWordsItems_** can already be used in the UI.
-Mandatory parameters:
-**_items_**, **_typeUniqueWords_**, **_listWordsReference_**, **_chapter_**, **_verse_** and **_listWordsChapter_**.
-The filtering method (book, chapter, verse) is passed in the **_typeUniqueWords_** parameter. The 'disabled' option will return the original array of items.
+You can use useMarkRepeatedWords
 
 ```js static
-const { uniqueWordsItems } = useSelectTypeUniqueWords({
-  items,
-  typeUniqueWords: switchTypeUniqueWords,
-  listWordsReference,
-  chapter,
-  verse,
-  listWordsChapter,
-});
-```
-
-An additional hook - **_useIsRepeated_** makes it possible to compare **_items_** and **_uniqueWordsItems_** - and returns a Boolean value. Can be used in highlighting the contents of the TWL card with color.
-
-```js static
-const isRepeated = useIsRepeated({
-  items,
-  hideRepeatedWords: switchHideRepeatedWords,
-  uniqueWordsItems,
-  itemIndex,
-});
+const { markedWords } = useMarkRepeatedWords({ items, tsvs });
 ```
 
 _For more examples, please refer to the [Styleguidist link](https://filter-translation-words-rcl.netlify.app)_

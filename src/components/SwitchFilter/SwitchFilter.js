@@ -1,27 +1,15 @@
 import React from 'react';
 
-import {
-  Checkbox,
-  FormControl,
-  FormControlLabel,
-  Radio,
-  RadioGroup,
-} from '@material-ui/core';
+import { FormControl, FormControlLabel, Radio, RadioGroup } from '@material-ui/core';
 
-function SwitchFilter({
-  state: { switchTypeUniqueWords, switchHideRepeatedWords },
-  actions: { setSwitchTypeUniqueWords, setSwitchHideRepeatedWords },
-  options,
-  classes,
-  labelHideOptions,
-}) {
+function SwitchFilter({ typeFilter, setTypeFilter, options, classes }) {
   const handleChange = (event) => {
-    setSwitchTypeUniqueWords(event.target.value);
+    setTypeFilter(event.target.value);
   };
 
   return (
     <FormControl component="fieldset">
-      <RadioGroup classes={classes} value={switchTypeUniqueWords} onChange={handleChange}>
+      <RadioGroup classes={classes} value={typeFilter} onChange={handleChange}>
         {options.map((el) => (
           <FormControlLabel
             key={el.value}
@@ -31,18 +19,6 @@ function SwitchFilter({
           />
         ))}
       </RadioGroup>
-      <FormControlLabel
-        control={
-          <Checkbox
-            checked={switchHideRepeatedWords}
-            onChange={(e) => {
-              setSwitchHideRepeatedWords((prev) => !prev);
-            }}
-            disabled={switchTypeUniqueWords === 'disabled'}
-          />
-        }
-        label={labelHideOptions}
-      />
     </FormControl>
   );
 }
