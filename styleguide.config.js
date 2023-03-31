@@ -11,9 +11,7 @@ let sections = [
     name: 'Hooks',
     components: [
       'src/components/useListWordsReference/useListWordsReference.js',
-      'src/components/useSelectTypeUniqueWords/useSelectTypeUniqueWords.js',
       'src/components/useMarkRepeatedWords/useMarkRepeatedWords.js',
-      'src/components/useIsRepeated/useIsRepeated.js',
     ],
   },
   {
