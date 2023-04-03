@@ -1,42 +1,21 @@
-import { useState } from 'react';
+import { useState, useMemo, useEffect } from 'react';
+import { convertTsvsToListWords } from '@texttree/translation-words-helpers';
 
 import useDeepCompareEffect from 'use-deep-compare-effect';
 
-const useListWordsReference = (tsvs, bookId) => {
-  const [listWordsReference, setListWordsReference] = useState({});
-  const [listWordsChapter, setListWordChapter] = useState({});
+const useListWordsReference = ({ tsvs }) => {
+  const [lists, setLists] = useState({});
 
-  useDeepCompareEffect(() => {
+  useEffect(() => {
     if (!tsvs) {
       return;
     }
-    const listBook = {};
-
-    const listChapter = {};
-    Object.entries(tsvs).forEach(([key, chapters]) => {
-      const chaptersWords = {};
-      Object.entries(chapters).forEach(([key, verses]) => {
-        verses.forEach((verse) => {
-          if (!Object.keys(listBook).includes(verse.TWLink)) {
-            listBook[verse.TWLink] = [verse.Reference];
-          }
-
-          if (!listBook[verse.TWLink].includes(verse.Reference)) {
-            listBook[verse.TWLink].push(verse.Reference);
-          }
-
-          if (!Object.keys(chaptersWords).includes(verse.TWLink)) {
-            chaptersWords[verse.TWLink] = verse.Reference.split(':')[1];
-          }
-        });
-      });
-      listChapter[key] = chaptersWords;
-    });
-
-    setListWordChapter(listChapter);
-    setListWordsReference(listBook);
-  }, [bookId, { tsvs }]);
-
-  return { listWordsReference, listWordsChapter };
+    const _lists = convertTsvsToListWords(tsvs);
+    if (_lists) {
+      setLists(_lists);
+    }
+  }, [tsvs]);
+  console.log(lists);
+  return lists;
 };
 export default useListWordsReference;

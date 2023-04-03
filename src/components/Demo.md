@@ -82,7 +82,7 @@ function Component() {
     ...config,
   });
 
-  const { listWordsReference, listWordsChapter } = useListWordsReference(tsvs);
+  const { listWordsReference, listWordsChapter } = useListWordsReference({ tsvs });
 
   const { markedWords } = useMarkRepeatedWords({ tsvs, items });
 
