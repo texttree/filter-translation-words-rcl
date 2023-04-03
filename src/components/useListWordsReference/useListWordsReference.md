@@ -21,8 +21,7 @@ function Component() {
     ...config,
   });
 
-  const { listWordsReference, listWordsChapter } = useListWordsReference(tsvs);
-  const json = { listWordsReference, listWordsChapter };
+  const json = useListWordsReference({ tsvs });
 
   return (
     <>
