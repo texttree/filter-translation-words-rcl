@@ -28,7 +28,7 @@ function Component() {
     ...config,
   });
   const [closed, setClosed] = useState(false);
-  const { listWordsReference, listWordsChapter } = useListWordsReference(tsvs);
+  const { listWordsReference, listWordsChapter } = useListWordsReference({ tsvs });
 
   const {
     state: { item, itemIndex, filters, markdownView, headers },
