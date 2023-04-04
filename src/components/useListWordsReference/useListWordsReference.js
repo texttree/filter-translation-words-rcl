@@ -1,7 +1,5 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { convertTsvsToListWords } from '@texttree/translation-words-helpers';
-
-import useDeepCompareEffect from 'use-deep-compare-effect';
 
 const useListWordsReference = ({ tsvs }) => {
   const [lists, setLists] = useState({});
@@ -15,7 +13,6 @@ const useListWordsReference = ({ tsvs }) => {
       setLists(_lists);
     }
   }, [tsvs]);
-  console.log(lists);
   return lists;
 };
 export default useListWordsReference;
