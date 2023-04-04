@@ -108,12 +108,6 @@ module.exports = {
         },
       ],
     },
-    resolve: {
-      fallback: {
-        path: false,
-        buffer: false,
-      },
-    },
     plugins: [
       new webpack.DefinePlugin({
         process: { env: {} },

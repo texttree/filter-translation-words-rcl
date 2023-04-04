@@ -1,7 +1,7 @@
 {
   "name": "@texttree/filter-translation-words-rcl",
   "author": "TextTree.org",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "React component library for mark and filtering repeated words in Translation Words Links",
   "keywords": [
     "rcl",
@@ -37,7 +37,8 @@
     "build": "styleguidist build",
     "lint": "eslint --fix .",
     "prettier": "prettier --write .",
-    "prepublishOnly": "rm -fr ./dist & babel ./src --out-dir ./dist -s inline",
+    "build:babel": "babel ./src --out-dir ./dist -s inline --ignore './src/components/**/*.jsx'",
+    "prepublishOnly": "rm -fr ./dist & yarn build:babel",
     "precommit": "lint-staged"
   },
   "peerDependencies": {
