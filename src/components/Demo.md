@@ -82,7 +82,7 @@ function Component() {
     ...config,
   });
 
-  const { listWordsReference, listWordsChapter } = useListWordsReference({ tsvs });
+  const { listWordsInBook, listWordsChapter } = useListWordsReference({ tsvs });
 
   const { markedWords } = useMarkRepeatedWords({ tsvs, items });
 
@@ -95,7 +95,6 @@ function Component() {
     chapter: chapter,
     projectId: bookId,
   });
-
   const showSaveChangesPrompt = () => {
     return new Promise((resolve, reject) => {
       resolve();
@@ -156,7 +155,7 @@ function Component() {
       >
         {item && (
           <ListReference
-            links={item && listWordsReference && listWordsReference[item.TWLink]}
+            links={item && listWordsInBook && listWordsInBook[item.TWLink]}
             onClickLink={onClickLink}
             currentChapter={chapter}
             currentVerse={verse}
