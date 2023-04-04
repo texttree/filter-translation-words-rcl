@@ -28,7 +28,7 @@ function Component() {
     ...config,
   });
   const [closed, setClosed] = useState(false);
-  const { listWordsReference, listWordsChapter } = useListWordsReference({ tsvs });
+  const { listWordsInBook, listWordsInChapter } = useListWordsReference({ tsvs });
 
   const {
     state: { item, itemIndex, filters, markdownView, headers },
@@ -48,7 +48,7 @@ function Component() {
   return (
     <>
       <ListReference
-        links={item && listWordsReference && listWordsReference[item.TWLink]}
+        links={item && listWordsInBook && listWordsInBook[item.TWLink]}
         onClickLink={onClickLink}
         currentChapter={currentChapter}
         currentVerse={currentVerse}
