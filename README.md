@@ -19,7 +19,7 @@
     <a href="https://filter-translation-words-rcl.netlify.app/"><strong>Explore the docs and code playground »</strong></a>
     <br />
     <br />
-    <div> <a href="https://github.com/texttree/filter-translation-words-rcl/issues">Report Bug</a> <span> · </span> <a href="https://github.com/texttree/filter-translation-words-rcl/issues">Request Feature</a></div>
+   <a href="https://github.com/texttree/filter-translation-words-rcl/issues">Report Bug</a> <span> · </span> <a href="https://github.com/texttree/filter-translation-words-rcl/issues">Request Feature</a>
   </p>
 </div>
 
