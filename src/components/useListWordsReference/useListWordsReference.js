@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
+
 import { convertTsvsToListWords } from '@texttree/translation-words-helpers';
 
-const useListWordsReference = ({ tsvs }) => {
+export default function useListWordsReference({ tsvs }) {
   const [lists, setLists] = useState({});
 
   useEffect(() => {
@@ -14,5 +15,4 @@ const useListWordsReference = ({ tsvs }) => {
     }
   }, [tsvs]);
   return lists;
-};
-export default useListWordsReference;
+}

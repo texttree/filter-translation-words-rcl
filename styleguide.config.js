@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const fs = require('fs');
 const { name, version, url } = require('./package.json');
 
 let sections = [
@@ -10,8 +11,8 @@ let sections = [
   {
     name: 'Hooks',
     components: [
-      'src/components/useListWordsReference/useListWordsReference.js',
-      'src/components/useMarkRepeatedWords/useMarkRepeatedWords.js',
+      'src/components/useListWordsReference/useListWordsReference.jsx',
+      'src/components/useMarkRepeatedWords/useMarkRepeatedWords.jsx',
     ],
   },
   {
@@ -39,7 +40,8 @@ module.exports = {
       meta: [
         {
           name: 'description',
-          content: 'React component library template',
+          content:
+            'React component library for mark and filtering repeated words in Translation Words Links',
         },
       ],
       links: [
@@ -82,11 +84,25 @@ module.exports = {
     const componentName = path.basename(componentPath, '.js');
     return `import { ${componentName} } from '${name}';`;
   },
+  updateExample(props, exampleFilePath) {
+    const { settings, lang } = props;
+    if (typeof settings?.file === 'string') {
+      const filepath = path.resolve(path.dirname(exampleFilePath), settings.file);
+      settings.static = true;
+      delete settings.file;
+      return {
+        content: fs.readFileSync(filepath, 'utf8'),
+        settings,
+        lang,
+      };
+    }
+    return props;
+  },
   webpackConfig: {
     module: {
       rules: [
         {
-          test: /\.js$/,
+          test: /\.jsx?$/,
           exclude: /node_modules/,
           loader: 'babel-loader',
         },

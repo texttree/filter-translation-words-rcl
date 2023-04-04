@@ -95,7 +95,6 @@ function Component() {
     chapter: chapter,
     projectId: bookId,
   });
-
   const showSaveChangesPrompt = () => {
     return new Promise((resolve, reject) => {
       resolve();
